@@ -1,0 +1,132 @@
+:root {
+  --bg-primary: #050608;
+  --bg-panel: #0a1014;
+  --line: #173036;
+  --text-primary: #d6ffe9;
+  --text-muted: #88b9a8;
+  --neon-cyan: #56f2e9;
+  --neon-magenta: #f25eea;
+  --warning-amber: #ffb347;
+  --danger-red: #ff5161;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #0d171e, var(--bg-primary) 40%);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.ui-shell {
+  position: relative;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(86, 242, 233, 0.06), rgba(5, 6, 8, 0.2));
+  border: 2px solid var(--line);
+  box-shadow: 0 0 0 1px rgba(86, 242, 233, 0.2) inset, 0 0 16px rgba(86, 242, 233, 0.08);
+  padding: 12px;
+}
+
+.title {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--neon-cyan);
+}
+
+.status-good {
+  color: var(--neon-cyan);
+}
+.status-warn {
+  color: var(--warning-amber);
+}
+.status-danger {
+  color: var(--danger-red);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.controls {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: 2px solid var(--line);
+  background: #0c1318;
+  color: var(--text-primary);
+  padding: 8px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mt {
+  margin-top: 12px;
+}
+
+.ml {
+  margin-left: 12px;
+}
+
+/* CRT layer and optional effects */
+.crt::before,
+.crt::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.crt::before {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+.crt::after {
+  background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+.crt-flicker {
+  animation: crt-flicker 200ms steps(2) 1;
+}
+
+@keyframes crt-flicker {
+  0% {
+    opacity: 0.96;
+  }
+  50% {
+    opacity: 0.78;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.high-contrast {
+  --bg-primary: #000;
+  --bg-panel: #000;
+  --line: #9ef6ff;
+  --text-primary: #fff;
+  --text-muted: #d9fdf4;
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
