@@ -37,9 +37,15 @@ body {
   color: var(--neon-cyan);
 }
 
-.status-good { color: var(--neon-cyan); }
-.status-warn { color: var(--warning-amber); }
-.status-danger { color: var(--danger-red); }
+.status-good {
+  color: var(--neon-cyan);
+}
+.status-warn {
+  color: var(--warning-amber);
+}
+.status-danger {
+  color: var(--danger-red);
+}
 
 .grid {
   display: grid;
@@ -51,6 +57,7 @@ body {
   margin-top: 16px;
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -60,6 +67,14 @@ body {
   padding: 8px 10px;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.mt {
+  margin-top: 12px;
+}
+
+.ml {
+  margin-left: 12px;
 }
 
 /* CRT layer and optional effects */
@@ -91,9 +106,15 @@ body {
 }
 
 @keyframes crt-flicker {
-  0% { opacity: 0.96; }
-  50% { opacity: 0.78; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0.96;
+  }
+  50% {
+    opacity: 0.78;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .high-contrast {
@@ -102,4 +123,10 @@ body {
   --line: #9ef6ff;
   --text-primary: #fff;
   --text-muted: #d9fdf4;
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }

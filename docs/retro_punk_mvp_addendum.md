@@ -7,15 +7,16 @@ This addendum introduces presentation-focused implementation details while prese
 - **Theme tokens + CRT style layer** via `src/theme/theme.ts` and `src/theme/theme.css`.
 - **Message key catalog** through `src/i18n/messageCatalog.ts` to avoid hardcoded display copy in server events.
 - **Accessibility toggles** (`high contrast`, `CRT effects`) in `src/accessibility/uiPreferences.ts`.
+- **Interactive React + Vite UI shell** in `src/App.tsx` with:
+  1. Boot / login messaging sequence
+  2. Match lobby link status
+  3. Command console with message-key-driven broadcast log
+  4. Simulated reconnect flicker behavior
 - **Data model extensions** in `db/migrations/20260217_match_theme_and_event_log.sql`:
   - `matches.aesthetic` (default `retro_punk_future`)
   - `matches.ruleset_version` (default `mvp_v1`)
   - `match_events.message_key`
   - `match_events.message_params`
-- **Visual prototype screen** in `prototype/index.html` with the three MVP screens:
-  1. Boot / login
-  2. Match lobby
-  3. Command console
 
 ## Notes
 
