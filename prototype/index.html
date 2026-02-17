@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thunderhead Retro-Punk MVP Mock</title>
+  <link rel="stylesheet" href="../src/theme/theme.css" />
+</head>
+<body>
+  <main id="app" class="ui-shell crt">
+    <section class="panel">
+      <h1 class="title">Boot / Mission Brief</h1>
+      <p id="bootState" class="status-good">AUTHENTICATING…</p>
+      <p>Universe speed: x2 · Ruleset: mvp_v1 · Aesthetic: retro_punk_future</p>
+    </section>
+
+    <section class="panel" style="margin-top: 12px;">
+      <h2 class="title">Match Lobby</h2>
+      <p><button class="btn">Create Operation</button> <button class="btn">Join Operation (Code)</button></p>
+      <p>Opponent uplink: <span id="linkState" class="status-warn">LINK PENDING</span></p>
+    </section>
+
+    <section class="panel" style="margin-top: 12px;">
+      <h2 class="title">Command Console</h2>
+      <div class="grid">
+        <div class="panel">
+          <h3 class="title">Telemetry</h3>
+          <p>Scrap: 1200</p><p>Circuitry: 455</p><p>Fuel: 330</p>
+        </div>
+        <div class="panel">
+          <h3 class="title">Fab Queue / Train Queue</h3>
+          <p>Refinery Mk2 · 00:14</p><p>Raiders x5 · 00:26</p>
+        </div>
+        <div class="panel">
+          <h3 class="title">Broadcast Log</h3>
+          <p class="status-good">FAB UNIT ONLINE</p>
+          <p>OUTBOUND RAID PACKET DISPATCHED</p>
+          <p class="status-warn">SUPPLY SHORTFALL: METAL</p>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn">Issue Order</button>
+        <button class="btn status-danger">Abort Campaign</button>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top: 12px;">
+      <h2 class="title">Accessibility</h2>
+      <label><input type="checkbox" id="toggleContrast" /> High contrast</label>
+      <label style="margin-left:12px;"><input type="checkbox" id="toggleCrt" checked /> CRT effects</label>
+    </section>
+  </main>
+
+  <script>
+    const app = document.getElementById('app');
+    const bootState = document.getElementById('bootState');
+    const linkState = document.getElementById('linkState');
+    const toggleContrast = document.getElementById('toggleContrast');
+    const toggleCrt = document.getElementById('toggleCrt');
+
+    setTimeout(() => bootState.textContent = 'SESSION TOKEN ACCEPTED', 1000);
+    setTimeout(() => {
+      linkState.textContent = 'LINK ESTABLISHED';
+      linkState.className = 'status-good';
+    }, 1500);
+
+    setInterval(() => {
+      if (!app.classList.contains('crt')) return;
+      app.classList.add('crt-flicker');
+      setTimeout(() => app.classList.remove('crt-flicker'), 250);
+    }, 5000);
+
+    toggleContrast.addEventListener('change', (event) => {
+      app.classList.toggle('high-contrast', event.target.checked);
+    });
+
+    toggleCrt.addEventListener('change', (event) => {
+      app.classList.toggle('crt', event.target.checked);
+    });
+  </script>
+</body>
+</html>
